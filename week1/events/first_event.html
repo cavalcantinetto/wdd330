@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
+<script>
+    function showCongrats() {
+        document.getElementById("result_display").innerHTML = "Congratulations you did it.<p>Go to the next page!</p>"
+    }
+</script>
 
 <head>
     <title>First Event</title>
 </head>
 
 <body>
-    <button>Click Me!</button>
+    <button onclick="showCongrats()">Click Me!</button>
+    <div id="result_display"></div>
 </body>
 
 </html>
