@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Challenge week 2</title>
+    <script>
+    </script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>Challenge Week 02 - Team Activity - Requirement 01</h1>
+        <!-- Requirement 01 -->
+        <input type="text" id="input-01" />
+        <button id="button01" onclick="req01function()">Submit</button>
+        <div id="req01OutPut">Result will appear here</div>
+    </section>
+    <hr>
+
+    <section>
+        <h1>Challenge Week 02 - Team Activity - requirement 02</h1>
+        <!-- Requirement 02 -->
+        <input type="number" step="1" id="input-02" />
+        <button id="button02" onclick="req02function()">Sum from 1 up to the number you choose.</button>
+        <div id="req02OutPut">Result will appear here</div>
+    </section>
+    <hr>
+    <section>
+        <h1>Challenge Week 02 - Team Activity - requirement 03</h1>
+        <!-- Requirement 03 -->
+        <input type="number" step="1" id="input-03-1" />
+        <input type="number" step="1" id="input-03-2" />
+        <button id="button03" onclick="req03function('add')">+</button>
+        <button id="button03" onclick="req03function('multiply')">*</button>
+        <button id="button03" onclick="req03function('divide')">/</button>
+        <div id="req03OutPut">Result will appear here</div>
+    </section>
+    <hr>
+</body>
+
+<script>
+    function req01function() {
+        let data = document.getElementById("input-01").value;
+        let output = document.getElementById("req01OutPut");
+        output.innerHTML = data;
+    }
+
+    function req02function() {
+        let number = document.getElementById("input-02").value;
+        let output = document.getElementById("req02OutPut");
+        let result = makesum(number);
+        output.innerHTML = result;
+
+    }
+
+    function makesum(number) {
+        let total = 0;
+        for (let i = 1; i <= number; i++) {
+            total += i;
+        }
+        return total;
+    }
+
+    function req03function(operation) {
+        let number1 = document.getElementById("input-03-1").value;
+        let number2 = document.getElementById("input-03-2").value;
+        let output = document.getElementById("req03OutPut");
+        let sumup;
+        switch (operation) {
+            case ('add'):
+                sumup = calcsum(number1, number2);
+                break;
+            case ("multiply"):
+                sumup = multiply(number1, number2);
+                break;
+            case ("divide"):
+                sumup = divide(number1, number2);
+                break;
+
+        }
+        output.innerHTML = sumup;
+
+    }
+
+    function calcsum(number1, number2) {
+        let result = parseInt(number1) + parseInt(number2);
+        return result;
+    }
+    //Streching goals
+    function multiply(number1, number2) {
+        let result = parseInt(number1) * parseInt(number2);
+        return result;
+    }
+
+    function divide(number1, number2) {
+        let result = ((number1) / (number2));
+        return result;
+    }
+</script>
+
+</html>
