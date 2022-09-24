@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD 330 portfolio</title>
+</head>
+
+<body>
+    <h1>WDD 330 portfolio</h1>
+    <h2>Week02</h2>
+    <ul>
+        <li>
+            <a href="consoleOutput.txt">I've done the exercises but most of them are just review.</p>
+        </li><br>
+        <li><a href="#">Week 2 Challenge</a> - what is the importance of weak Sets and the proccess of garbage collector?.</li>
+
+        <h3>DONES and TO-DOs:</h3>
+        <ol>
+            <li>
+                working on DOM structures to work better with JS.
+            </li>
+            <li>
+                Done: 1. Done with the codes used in the chapter as scripts in this page.
+            </li>
+    </ul>
+    <div>
+        <script>
+            const quiz = [
+                ["What is Superman's real name?", "Clark Kent"],
+                ["What is Wonder Woman's real name?", "Diana Prince"],
+                ["What is Batman's real name?", "Bruce Wayne"]
+            ];
+            let score = 0;
+            for (const [q, a] of quiz) {
+                const response = prompt(q);
+                if (response == a) {
+                    alert("Correct!");
+                    score++;
+                } else {
+                    alert(`Incorrect. The correct answer was ${a}.`)
+                }
+            }
+            alert(`Your Total score was ${score} point${score !==1 ? 's' : ''}.`);
+        </script>
+    </div>
+</body>
+
+</html>

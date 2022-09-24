@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <script>
-    function showCongrats() {
+    function showCongrats(thebutton) {
         document.getElementById("result_display").innerHTML = "Congratulations you did it.<p>Go to the next page!</p>"
+        thebutton.innerHTML = "Click Me  Again"
     }
 </script>
 
@@ -11,7 +12,7 @@
 </head>
 
 <body>
-    <button onclick="showCongrats()">Click Me!</button>
+    <button onclick="showCongrats(this)">Click Me!</button>
     <div id="result_display"></div>
 </body>
 

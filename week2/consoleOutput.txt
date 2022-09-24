@@ -1,0 +1,88 @@
+const avengers = ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow'];
+undefined
+avengers.lenght
+undefined
+avengers.length
+6
+avengers.length-1
+5
+avengers[avengers.length-1]
+'Black Widow'
+avengers.lenght = 8
+8
+avengers
+(6) ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow', lenght: 8]
+avengers.length = 8
+8
+avengers
+(8) ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow', empty × 2, lenght: 8]
+//pop removes the last ite of an array
+undefined
+avengers.pop
+ƒ pop() { [native code] }
+avengers
+(8) ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow', empty × 2, lenght: 8]
+avengers.pop();
+undefined
+avengers
+(7) ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow', empty, lenght: 8]
+avengers.pop();
+undefined
+avengers.pop();
+'Black Widow'
+//shift remove the first item instead of the last
+undefined
+avengers.shift();
+'Captain America'
+avengers
+(4) ['Iron Man', 'Thor', 'Hulk', 'Hawkeye', lenght: 8]
+avengers.push("Thor")
+5
+avengers
+(5) ['Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Thor', lenght: 8]
+delete avengers.lenght
+true
+avengers
+(5) ['Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Thor']
+avengers.unshit("Captain America")
+VM1103:1 Uncaught TypeError: avengers.unshit is not a function
+    at <anonymous>:1:10
+(anonymous) @ VM1103:1
+avengers.unshift("Captain America")
+6
+avengers
+(6) ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Thor']
+avengers.concat(['Hulk','Hawkeye', 'Black Widow']);
+(9) ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow']
+avengers
+(6) ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Thor']
+avengers.pop();
+'Thor'
+avengers.pop();
+'Hawkeye'
+avengers.pop();
+'Hulk'
+avengers = avengers.concat(['Hulk','Hawkeye', 'Black Widow']);
+VM1334:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:10
+(anonymous) @ VM1334:1
+avengers = avengers.concat(['Hulk','Hawkeye', 'Black Widow'])
+VM1361:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:10
+(anonymous) @ VM1361:1
+let avengers = avengers.concat(['Hulk','Hawkeye', 'Black Widow'])
+VM1395:1 Uncaught SyntaxError: Identifier 'avengers' has already been declared
+let newAvengers = avengers.concat(['Hulk','Hawkeye', 'Black Widow'])
+undefined
+newAvengers
+(6) ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow']
+newAvengers.join()
+'Captain America,Iron Man,Thor,Hulk,Hawkeye,Black Widow'
+newAvengers.join("e")
+'Captain AmericaeIron ManeThoreHulkeHawkeyeeBlack Widow'
+newAvengers.join("e ")
+'Captain Americae Iron Mane Thore Hulke Hawkeyee Black Widow'
+newAvengers.join(" e ")
+'Captain America e Iron Man e Thor e Hulk e Hawkeye e Black Widow'
+newAvengers.splice(3,1,"Scarlet")
+['Hulk']
