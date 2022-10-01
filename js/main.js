@@ -1,14 +1,31 @@
-const links = [{
-    label: "Week1 notes and exercises",
-    url: "week1/index.html"
-}]
+let links = [{
+    "label": "Week1 notes and exercises",
+    "url": "week1/index.html"
+}, {
+    "label": "Week2 notes and exercises",
+    "url": "week2/index.html"
+}, {
+    "label": "Week3 notes and exercises",
+    "url": "week3/index.html"
+}];
+
+let weeklinks = buildMainIndex(links);
 
 function buildMainIndex(links) {
-    var result = "<li>"
-    for (const [k, v] of Object.entries(links)) {
-        result = result.concat(" ", "<a href='", k, "'>", v, "</a></li>")
+    var result = "";
+    let size = links.length;
+    for (let i = 0; i < size; i++) {
+        result = result.concat("<li><a href='", links[i].url, "'>", links[i].label, "</a></li>");
+
     }
+    console.log(result);
     return result
+}
+
+function createElement(tag, text) {
+    const el = document.createElement(tag);
+    el.textContent = text;
+    return el;
 }
 
 const quiz = [

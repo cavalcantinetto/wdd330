@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Justice League</title>
+    <script src="../../js/main.js"></script>
+    <link rel='stylesheet' href='/wdd330/css/styles.css'>
+</head>
+
+<body>
+    <header>
+        <h1 id='title'>Justice League</h1>
+    </header>
+    <ul id='roster'>
+        <li class='hero'>Superman</li>
+        <li class='vigilante hero' id='bats'>Batman</li>
+        <li class='hero'>Wonder Woman</li>
+    </ul>
+</body>
+<script>
+    const body = document.body;
+    const h1 = document.getElementById("title");
+    console.log(h1);
+    const listItens = document.getElementsByTagName('li');
+    console.log(listItens[1])
+    const heroe = document.getElementsByClassName('hero');
+    console.log(heroe.length);
+    const heroes = document.getElementById('roster');
+    console.log(heroes.childNodes)
+    const wonderWoman = document.querySelector('ul#roster li:last-child');
+    console.log(wonderWoman);
+    const textNode = wonderWoman.firstChild;
+    console.log(textNode);
+    const flash = document.createElement('li');
+    console.log(flash);
+    const textFlash = document.createTextNode('Flash');
+    flash.appendChild(textFlash);
+    const aquaman = createElement("li", 'Aquaman');
+    console.log(aquaman)
+    heroes.appendChild(flash);
+    heroes.insertBefore(aquaman, wonderWoman);
+    heroes.removeChild(aquaman);
+    heroes.appendChild(aquaman);
+
+    //get h1 again to change value
+    const oldText = h1.firstChild;
+    const newText = document.createTextNode("Justice League of America");
+    h1.replaceChild(newText, oldText);
+
+    h1.innerHTML = "Suicide Squad";
+    heroes.innerHTML = "<li>Harley Quinn</li><li>Deadshot</li><li>Killer Croc</li><li>Enchantress</li><li>Captain Boomerang</li><li>Katana</li><li>Slipknot</li>";
+</script>
+
+</html>
