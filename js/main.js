@@ -9,7 +9,7 @@ let links = [{
     "url": "week3/index.html"
 }];
 
-let weeklinks = buildMainIndex(links);
+let weeklinks = buildMainIndex(links); //here it is defined
 
 function buildMainIndex(links) {
     var result = "";
