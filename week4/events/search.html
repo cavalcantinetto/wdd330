@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Chapter 8 - week 4</title>
+    <script src="../main.js"></script>
+    <link rel='stylesheet' href='/wdd330/css/styles.css'>
+
+</head>
+<form name='search' action="/search">
+    <input name="searchInput">
+    <button type="submit">Search</button>
+</form>
+
+<body>
+
+
+</body>
+
+<script>
+    form = gettingForm();
+    elementsOnForm = gettingElementsOnForm(form);
+    console.log(elementsOnForm);
+    const input = form.elements.searchInput;
+    setSearchValue(elementsOnForm.searchInput, "valueToInput");
+    elementsOnForm.searchInput.addEventListener('focus', () => {
+        if (input.value === "valueToInput") {
+            input.value = ""
+        }
+    }, false);
+    elementsOnForm.searchInput.addEventListener('blur', () => {
+        if (input.value === "") {
+            input.value = "ValueToAdd"
+        }
+    }, false);
+    elementsOnForm.searchInput.addEventListener('change', () => alert('Changed', false));
+    form.addEventListener('submit', search, false);
+</script>
+
+</html>

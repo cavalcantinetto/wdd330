@@ -1,15 +1,20 @@
 let links = [{
-    "label": "Week1 notes and exercises",
-    "url": "week1/index.html"
-}, {
-    "label": "Week2 notes and exercises",
-    "url": "week2/index.html"
-}, {
-    "label": "Week3 notes and exercises",
-    "url": "week3/index.html"
-}];
+        "label": "Week1 notes and exercises",
+        "url": "week1/index.html"
+    }, {
+        "label": "Week2 notes and exercises",
+        "url": "week2/index.html"
+    }, {
+        "label": "Week3 notes and exercises",
+        "url": "week3/index.html"
+    },
+    {
+        "label": "Week4 notes and exercises",
+        "url": "week4/index.html"
+    }
+];
 
-let weeklinks = buildMainIndex(links); //here it is defined
+let weeklinks = buildMainIndex(links); //here it is defined. new comment
 
 function buildMainIndex(links) {
     var result = "";

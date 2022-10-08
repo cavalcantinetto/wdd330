@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Chapter 8 - week 4</title>
+    <script src="main.js">
+    </script>
+    <link rel='stylesheet' href='/wdd330/css/styles.css'>
+
+</head>
+
+<body>
+    <form id='hero'>
+        <p><label for='heroName'>Name:
+        <input type='text' id='heroName' name='heroName' autofocus placeholder='Your Super Hero Name' maxlength=32>
+        </label></p>
+        <label for="realName">Real Name:
+        <input type="password" name="realName" id="realName"></label>
+        <p>Super powers:</p>
+        <label for="Flight">Flight: <input type="checkbox" id="flight" value="Flight" name="powers" </label>
+        <label for='strength'>Super Strength:
+            <input type='checkbox' id='strength' value='Strength'
+            name='powers'>
+        </label>
+        <label for='speed'>Super Speed:
+            <input type='checkbox' id='speed' value='Super Speed'
+             name='powers'>
+        </label>
+        <label for='energy'>Energy Blasts:
+            <input type='checkbox' id='energy' value='Energy Blasts'
+            name='powers'>
+        </label>
+        <label for='telekinesis'>Telekinesis:
+            <input type='checkbox' id='telekinesis'
+             value='Telekinesis' name='powers'>
+        </label>
+        <p>What type of hero are you?</p>
+        <label for="hero">Hero:
+            <input type="radio" name="category" value="Hero" id="heroradio">
+        </label>
+        <label for='villain'>Villain:
+            <input type='radio' name='category' value='Villain' id='villain'>
+            </label>
+        <label for='anti-hero'>Anti-Hero:
+            <input type='radio' name='category' value='Antihero' id='anti-hero'>
+            </label><br>
+        <label for='age'>Age:
+                <input type='number' id='age' name='age' min=0 step=1></label><br>
+        <label for='City'>Base of Operations:
+                    <select name='city' id='city'>
+                    <option value='' selected>Choose a City</option>
+                    <option value='Metropolis'>Metropolis</option>
+                    <option value='Gotham City'>Gotham City</option>
+                    <option value='Keystone City'>Keystone City</option>
+                    <option value='Coast City'>Coast City</option>
+                    <option value='Star City'>Star City</option>
+                    </select>
+        </label>
+        <p><label for='origin'>Origin Story:<br>
+            <textarea id='origin' name='origin' rows='20' cols='60'></textarea>
+            </label></p>
+        <p><button type='submit'>Submit</button></p>
+    </form>
+</body>
+<script>
+    const form = document.forms['hero'];
+    form.addEventListener('submit', makeHero, false);
+    form.powers[0].checked = true;
+    console.log(form.category)
+</script>
+
+
+</html>
