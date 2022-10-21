@@ -14,7 +14,11 @@ let links = [{
     }, {
         "label": "Week5 notes and exercises",
         "url": "week5/index.html"
+    }, {
+        "label": "MID TERM CHALLENGE",
+        "url": "challenge/index.html"
     }
+
 ];
 
 let weeklinks = buildMainIndex(links); //here it is defined. new comment
