@@ -11,7 +11,7 @@ let links = [{
     {
         "label": "Week4 notes and exercises",
         "url": "week4/index.html"
-    } {
+    }, {
         "label": "Week5 notes and exercises",
         "url": "week5/index.html"
     }
