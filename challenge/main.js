@@ -8,19 +8,21 @@ var ul = document.querySelector("ul");
 //will hold the list of itens
 var item = document.getElementsByTagName("li");
 
+//Check if locaStorage tasks exists;
+if (typeof localStorage.getItem('tasks') != 'undefined') {
+    image_array = JSON.parse(localStorage.getItem('tasks'));
+    //if don't creates it and assign to image_array;
+} else {
+    localStorage.setItem("tasks", "[]");
+    image_array = JSON.parse(localStorage.getItem('tasks'));
+}
+
 //this function will render all inputs in local storage if they exist
 window.addEventListener("load", callDataOnLoad);
 
 //this function will check if there is data stored on localStorage and render it if true.
 function callDataOnLoad() {
-    //Check if locaStorage tasks exists;
-    if (typeof localStorage.getItem('tasks') != 'undefined') {
-        image_array = JSON.parse(localStorage.getItem('tasks'));
-        //if don't creates it and assign to image_array;
-    } else {
-        localStorage.setItem("tasks", "[]");
-        image_array = JSON.parse(localStorage.getItem('tasks'));
-    }
+
     //Check if image_array exists. if not creates it;
     if (typeof image_array == null) {
         // the array is undefined, so set it.
@@ -98,6 +100,7 @@ function addListAfterClick() {
         if (typeof image_array == 'undefined') {
             // the array is undefined, so set it.
             image_array = [];
+
         }
         image_array = insertElementInArray(image_array);
         image_array.forEach(element => {
@@ -112,7 +115,13 @@ function addListAfterClick() {
 function insertElementInArray(image_array) {
 
     //insert new item in array with status false to the DONE option
-    lenghtOfArray = image_array.length;
+    if (image_array.length) {
+        lenghtOfArray = image_array.length;
+    } else {
+        image_array = [];
+        localStorage.setItem('tasks', JSON.stringify(image_array));
+
+    }
     image_array.push({ input: input.value, status: false, index: lenghtOfArray });
     localStorage.setItem('tasks', JSON.stringify(image_array));
     return image_array;
