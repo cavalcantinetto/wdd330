@@ -29,6 +29,7 @@ function callDataOnLoad() {
         image_array = [];
     } else {
         //loop the array and reder each existing element on the page
+        image_array = JSON.parse(localStorage.getItem('tasks'));
         image_array.forEach(element => {
             if (element != null) {
                 createListElement(element.input, element.status, element.index);
