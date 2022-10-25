@@ -22,7 +22,7 @@ function callDataOnLoad() {
         image_array = JSON.parse(localStorage.getItem('tasks'));
     }
     //Check if image_array exists. if not creates it;
-    if (typeof image_array == 'undefined') {
+    if (typeof image_array == null) {
         // the array is undefined, so set it.
         image_array = [];
     } else {
