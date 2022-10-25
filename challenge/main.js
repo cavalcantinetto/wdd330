@@ -9,7 +9,7 @@ var ul = document.querySelector("ul");
 var item = document.getElementsByTagName("li");
 
 //Check if locaStorage tasks exists;
-if (typeof localStorage.getItem('tasks') != 'undefined') {
+if (typeof localStorage.getItem('tasks') != null) {
     image_array = JSON.parse(localStorage.getItem('tasks'));
     //if don't creates it and assign to image_array;
 } else {
