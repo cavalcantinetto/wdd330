@@ -99,7 +99,7 @@ function addListAfterClick() {
             // the array is undefined, so set it.
             image_array = [];
         }
-        image_array = insertElementInArray();
+        image_array = insertElementInArray(image_array);
         image_array.forEach(element => {
             if (element != null) {
                 createListElement(element.input, element.status, element.index);
@@ -109,7 +109,7 @@ function addListAfterClick() {
     }
 }
 
-function insertElementInArray() {
+function insertElementInArray(image_array) {
 
     //insert new item in array with status false to the DONE option
     lenghtOfArray = image_array.length;
