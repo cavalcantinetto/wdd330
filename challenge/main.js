@@ -9,12 +9,16 @@ var ul = document.querySelector("ul");
 var item = document.getElementsByTagName("li");
 
 //Check if locaStorage tasks exists;
-if (typeof localStorage.getItem('tasks') != null) {
+
+if (typeof JSON.parse(localStorage.getItem('tasks')) != "undefined") {
     image_array = JSON.parse(localStorage.getItem('tasks'));
+    console.log(typeof image_array, 1);
+    console.log(Array.isArray(image_array));
     //if don't creates it and assign to image_array;
 } else {
-    localStorage.setItem("tasks", []);
+    localStorage.setItem("tasks", "[]");
     image_array = JSON.parse(localStorage.getItem('tasks'));
+    console.log(image_array, 2);
 }
 
 
