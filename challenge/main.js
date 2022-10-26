@@ -10,7 +10,7 @@ var item = document.getElementsByTagName("li");
 
 //Check if locaStorage tasks exists;
 
-if (typeof JSON.parse(localStorage.getItem('tasks')) != "undefined") {
+if (typeof(localStorage.getItem("tasks")) != 'undefined') {
     image_array = JSON.parse(localStorage.getItem('tasks'));
     console.log(typeof image_array, 1);
     console.log(Array.isArray(image_array));
