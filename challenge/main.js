@@ -12,8 +12,15 @@ var item = document.getElementsByTagName("li");
 
 if (typeof(localStorage.getItem("tasks")) != null) {
     image_array = JSON.parse(localStorage.getItem('tasks'));
-    console.log(typeof image_array, 1);
-    console.log(Array.isArray(image_array));
+    if (Array.isArray(image_array)) {
+        console.log(image_array, 1);
+    } else {
+        console.log(typeof image_array, 1);
+        image_array = [];
+        localStorage.setItem("tasks", JSON.stringify(image_array));
+        console.log(Array.isArray(image_array));
+    }
+
     //if don't creates it and assign to image_array;
 } else {
     localStorage.setItem("tasks", "[]");
