@@ -17,11 +17,12 @@ if (typeof localStorage.getItem('tasks') != null) {
     image_array = JSON.parse(localStorage.getItem('tasks'));
 }
 
+
 //this function will render all inputs in local storage if they exist
 window.addEventListener("load", callDataOnLoad);
 
 //this function will check if there is data stored on localStorage and render it if true.
-function callDataOnLoad() {
+function callDataOnLoad(image_array) {
 
     //Check if image_array exists. if not creates it;
     if (typeof image_array == null) {
@@ -67,8 +68,7 @@ function createListElement(elementInput, elementStatus, elementIndex) {
             li.classList.toggle("done");
             //change status value at localStorage.
             indexOfElementToBeChanged = li.getAttribute("id");
-            indexOfElementToBeChanged = parseInt(indexOfElementToBeChanged);
-            changeStatus(parseInt(indexOfElementToBeChanged));
+            changeStatus(indexOfElementToBeChanged);
         }
         li.addEventListener("click", crossOut);
 
@@ -86,7 +86,7 @@ function createListElement(elementInput, elementStatus, elementIndex) {
         function deleteListItem() {
             li.classList.add("delete")
             indexToBeDeleted = li.getAttribute('id');
-            removeFromArray(parseInt(indexToBeDeleted))
+            removeFromArray(parseInt(indexToBeDeleted));
 
 
         }
@@ -94,7 +94,7 @@ function createListElement(elementInput, elementStatus, elementIndex) {
     }
 }
 
-//her I will input the item into the array in localstorage
+// I will input the item into the array in localstorage
 function addListAfterClick() {
     if (inputLength() > 0) { //makes sure that an empty input field doesn't create a li
         //createListElement();
@@ -116,16 +116,12 @@ function addListAfterClick() {
 function insertElementInArray(image_array) {
 
     //insert new item in array with status false to the DONE option
-    if (image_array.length) {
-        lenghtOfArray = image_array.length;
-    } else {
-        image_array = [];
-        localStorage.setItem('tasks', JSON.stringify(image_array));
-
-    }
-    image_array.push({ input: input.value, status: false, index: lenghtOfArray });
+    //I changed ID to be date Now.
+    uniqueId = Date.now();
+    image_array.push({ input: input.value, status: false, 'index': parseInt(uniqueId) });
     localStorage.setItem('tasks', JSON.stringify(image_array));
     return image_array;
+
 }
 
 function addListAfterKeypress(event) {
@@ -138,22 +134,32 @@ function addListAfterKeypress(event) {
 function changeStatus(indexOfElementToBeChanged) {
 
     image_array = JSON.parse(localStorage.getItem('tasks'))
-    if (image_array[indexOfElementToBeChanged] != null) {
-        if (image_array[indexOfElementToBeChanged]['status'] == false) {
-            image_array[indexOfElementToBeChanged]['status'] = true;
-            localStorage.setItem('tasks', JSON.stringify(image_array));
-        } else {
-            image_array[indexOfElementToBeChanged]['status'] = false;
-            localStorage.setItem('tasks', JSON.stringify(image_array));
+    for (var i = 0; i < image_array.length; i++) {
+        if ((image_array[i]['index']) === parseInt(indexOfElementToBeChanged)) {
+            if (image_array[i]['status'] == false) {
+                image_array[i]['status'] = true;
+                localStorage.setItem('tasks', JSON.stringify(image_array));
+            } else {
+                image_array[i]['status'] = false;
+                localStorage.setItem('tasks', JSON.stringify(image_array));
+            }
+            break;
         }
     }
 }
 
+
 function removeFromArray(indexToBeDeleted) {
+    //get the array from local storage
     image_array = JSON.parse(localStorage.getItem('tasks'))
-    delete image_array[indexToBeDeleted];
-    localStorage.setItem('tasks', JSON.stringify(image_array));
-    console.log(image_array);
+    for (var i = 0; i < image_array.length; i++) {
+        if (image_array[i]['index'] == indexToBeDeleted) {
+            image_array.splice([i], 1);
+            localStorage.setItem('tasks', JSON.stringify(image_array));
+            break;
+        }
+
+    }
 }
 
 enterButton.addEventListener("click", addListAfterClick);
