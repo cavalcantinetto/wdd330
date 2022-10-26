@@ -10,7 +10,7 @@ var item = document.getElementsByTagName("li");
 
 //Check if locaStorage tasks exists;
 
-if (typeof(localStorage.getItem("tasks")) != 'undefined') {
+if (typeof(localStorage.getItem("tasks")) != null) {
     image_array = JSON.parse(localStorage.getItem('tasks'));
     console.log(typeof image_array, 1);
     console.log(Array.isArray(image_array));
@@ -19,6 +19,7 @@ if (typeof(localStorage.getItem("tasks")) != 'undefined') {
     localStorage.setItem("tasks", "[]");
     image_array = JSON.parse(localStorage.getItem('tasks'));
     console.log(image_array, 2);
+    console.log(Array.isArray(image_array, 2));
 }
 
 
