@@ -13,7 +13,7 @@ if (typeof localStorage.getItem('tasks') != null) {
     image_array = JSON.parse(localStorage.getItem('tasks'));
     //if don't creates it and assign to image_array;
 } else {
-    localStorage.setItem("tasks", "[]");
+    localStorage.setItem("tasks", []);
     image_array = JSON.parse(localStorage.getItem('tasks'));
 }
 
