@@ -15,7 +15,7 @@ if (typeof(localStorage.getItem("tasks")) != null) {
     if (Array.isArray(image_array)) {
         console.log(image_array, 1);
     } else {
-        console.log(typeof image_array, 1);
+        console.log(typeof image_array, 12);
         image_array = [];
         localStorage.setItem("tasks", JSON.stringify(image_array));
         console.log(Array.isArray(image_array));

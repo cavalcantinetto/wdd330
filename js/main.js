@@ -17,6 +17,9 @@ let links = [{
     }, {
         "label": "MID TERM CHALLENGE",
         "url": "challenge/index.html"
+    }, {
+        "label": "week 7 notes and exercises",
+        "url": "week7/index.html"
     }
 ];
 
