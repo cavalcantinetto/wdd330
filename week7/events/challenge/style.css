@@ -67,3 +67,38 @@ main>h1 {
 .light h3 {
     margin-bottom: -0.5em;
 }
+
+.card-comments {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    flex-direction: column;
+}
+
+.cardcomment {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: stretch;
+    width: 90%
+}
+
+.carddate-type {
+    display: inline-block;
+    width: 90%;
+    display: flex;
+    align-items: stretch;
+}
+
+
+/* On mouse-over, add a deeper shadow */
+
+.card-comments:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
