@@ -9,7 +9,6 @@
 
 <body>
 
-
     <div class="keys">
         <div data-key="65" class="key">
             <kbd>A</kbd>
@@ -60,6 +59,50 @@
     <audio data-key="76" src="sounds/tink.wav"></audio>
 
     <script>
+        window.addEventListener('keydown', function(e) {
+            //gets all audio elements and select the one that has data-key iguals to the keyboard keyCode.
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            //gets DIV class with the number pressed at the keyboard
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            //add a new class to the element so it changes itself
+            key.classList.add('playing');
+            //eliminate all keyboard presses that have no sound attached.
+            if (!audio) {
+                return;
+            }
+            key.classList.add('movedown');
+
+            //console.log(audio);
+
+            //start audio from beginning
+            audio.currentTime = 0;
+            //plays audio
+            audio.play();
+        })
+
+        //start removing animation
+        function removeClass(e) {
+            if (e.propertyName != 'transform') {
+                return;
+            }
+            this.classList.remove('playing');
+            //console.log(this);
+            this.classList.remove('movedown')
+
+        }
+
+        function moveDown(e) {
+            if (e.propertyName != 'transform') {
+                return;
+            }
+            //this.classList.remove('playing');
+
+            console.log(this);
+        }
+        const keys = document.querySelectorAll('.key');
+        //console.log(keys)
+        keys.forEach(key => key.addEventListener('transitionend', removeClass));
+        keys.forEach(key => key.addEventListener('transitionend', moveDown));
     </script>
 
 
