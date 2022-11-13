@@ -23,6 +23,9 @@ let links = [{
     }, {
         "label": "week 8 notes and exercises",
         "url": "week8/index.html"
+    }, {
+        "label": "week 9 notes and exercises",
+        "url": "week9/index.html"
     }
 ];
 

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Challenge week 8</title>
+    <script src="/wdd330/js/main.js"></script>
+    <link rel='stylesheet' href='/wdd330/css/styles.css'>
+
+</head>
+
+<body>
+    <h1>Week 9 - window object and API</h1>
+    <section>
+        <p>The window object allows us to capture some information from the user's browser.</p>
+        <h2>Some scripts are runing and returning infomration in console.</h2>
+        <p id="navigator"></p>
+        <p id='url'></p>
+        <p> We may also open a pop up from window object like happened we you join this site.</p>
+        <p>Document.write repleces all the page for the text</p>
+        <h2>Cookies</h2>
+        <p>Cookies are used to store and retrieve information from the user.</p>
+        <p>Document.cookie sets a cookie with value pair information</p>
+
+
+
+    </section>
+</body>
+<script type=" text/javascript ">
+    let navigator = document.getElementById('navigator');
+    navigator.innerHTML = "Navigator is: " + window.navigator.userAgent;
+    let url = document.getElementById('url');
+    url.innerHTML = "You are at: " + window.location.href;
+    //window.open('https://sitepoint.com', 'SitePoint', 'width=400,height=400,resizable=yes');
+    window.setTimeout(() => alert("time out zone set"), 3000);
+    let summon = window.setInterval(() => {
+        console.log("It's running indefitely")
+    }, 3000).
+    window.clearInterval(summon);
+
+
+    console.log(window.navigator.userAgent)
+    console.log(window.location.href)
+</script>
+
+</html>
