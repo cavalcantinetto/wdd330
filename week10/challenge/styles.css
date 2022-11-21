@@ -7,3 +7,25 @@ span {
     border-radius: 0 0 5px 5px;
     box-sizing: border-box;
 }
+
+#tablequakes td,
+#tablequakes th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tablequakes tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tablequakes tr:hover {
+    background-color: #ddd;
+}
+
+#tablequakes th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #044faa;
+    color: white;
+}

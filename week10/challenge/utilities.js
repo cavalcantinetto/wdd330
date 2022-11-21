@@ -34,5 +34,12 @@ export async function getLocalization(baseUrl, maxRadius) {
 };
 
 export function buildQuakeTable(quakes) {
+    let html = "";
+    html += "<table id='tablequakes'><thead><th>Title</th><th>Time</th>";
+    quakes.forEach(e => {
+        html += `<tr><td>${e.properties.title}</td><td>${new Date(e.properties.time)}</td></tr>`
+    });
+    html += "</table>";
+    return html;
 
 }
