@@ -29,6 +29,9 @@ let links = [{
     }, {
         "label": "week 10 notes and exercises",
         "url": "week10/index.html"
+    }, {
+        "label": "week 11 notes and exercises",
+        "url": "week11/client/week11.html"
     }
 ];
 
