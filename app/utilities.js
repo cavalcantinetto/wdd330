@@ -1,6 +1,8 @@
 import { getCityName, buildNewLocationUrl } from './getCoords.js'
 const waitIcon = document.getElementById('loading')
 
+let baseUrlGeo = "http://api.openweathermap.org/geo/1.0/direct?"
+
 export async function getNewCities() {
     waitIcon.style.visibility = 'visible';
     let newPlace = await getNewPlace()
