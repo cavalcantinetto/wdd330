@@ -1,5 +1,5 @@
 import { getCityName, buildNewLocationUrl } from './getCoords.js'
-
+const waitIcon = document.getElementById('loading')
 
 export async function getNewCities() {
     waitIcon.style.visibility = 'visible';
