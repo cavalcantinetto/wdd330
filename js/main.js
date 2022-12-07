@@ -6,6 +6,9 @@ let links = [{
         "label": "Week1 notes and exercises",
         "url": "week1/index.html"
     }, {
+        "label": "Week1 notes and exercises",
+        "url": "week1/index.html"
+    }, {
         "label": "Week2 notes and exercises",
         "url": "week2/index.html"
     }, {
