@@ -1,5 +1,6 @@
-import { buildLocationUrl, getCityName, buildNewLocationUrl } from './getCoords.js'
+import { buildLocationUrl } from './getCoords.js'
 import { getDataFromApi } from './fecthData.js'
+import { getNewCities } from './utilities.js'
 
 //get all fields at index page that will be changed or fullfilled
 const timeZone = document.getElementById('timezone');
@@ -43,4 +44,3 @@ async function main() {
     waitIcon.style.visibility = 'hidden'
 
 }
-

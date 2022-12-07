@@ -1,10 +1,13 @@
-async function getNewCities() {
+import { getCityName, buildNewLocationUrl } from './getCoords.js'
+
+
+export async function getNewCities() {
     waitIcon.style.visibility = 'visible';
     let newPlace = await getNewPlace()
     const completeCityUrl = await getCityName(baseUrlGeo, newPlace)
         //For testing purposes
-    //console.log(completeCityUrl);
-    //console.log("getting new cities")
+        //console.log(completeCityUrl);
+        //console.log("getting new cities")
     const newCities = await getDataFromApi(completeCityUrl)
         //agora tem que inserir essas cidades na tela para o usuário escolher.
     await insertCities(newCities);
@@ -13,6 +16,7 @@ async function getNewCities() {
 }
 
 
+export
 async function insertCities(newCities) {
     const existingDiv = getDivElement('cities');
     existingDiv.innerHTML = "";
