@@ -1,10 +1,7 @@
 let links = [{
-        "label": "Final Challenge",
+        "label": "FINAL CHALLENGE",
         "url": "app/index.html"
 
-    }, {
-        "label": "Week1 notes and exercises",
-        "url": "week1/index.html"
     }, {
         "label": "Week1 notes and exercises",
         "url": "week1/index.html"
