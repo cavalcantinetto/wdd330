@@ -1,6 +1,3 @@
-//Falta mudar o C para F quando for farenheit e falt colocar filtro quando tiver vazia a resposta do servidor.
-
-
 import { buildLocationUrl, getCityName, buildNewLocationUrl } from './getCoords.js'
 import { getDataFromApi } from './fecthData.js'
 //import {convertCelsiusToFarenheit} from './utilities'
@@ -20,7 +17,7 @@ let tempInCelsius;
 
 //define adresses for the API's
 let baseUrlLocation = "https://api.openweathermap.org/data/2.5/weather?"
-let baseUrlGeo = "http://api.openweathermap.org/geo/1.0/direct?"
+let baseUrlGeo = "https://api.openweathermap.org/geo/1.0/direct?"
 waitIcon.style.visibility = 'visible';
 
 //build Url to retrieve data
