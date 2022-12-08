@@ -2,7 +2,6 @@ export function getDataFromApi(url) {
     return fetch(url)
         .then(data => {
             if (!data.ok) {
-                //console.log("it did not work well!");
                 throw Error(data.statusText)
             } else {
                 //console.log("it worked well!");
@@ -10,6 +9,7 @@ export function getDataFromApi(url) {
             }
         })
         .catch(function(error) {
-            console.log(error);
+            //console.log(error);
+            return null;
         })
 }

@@ -1,9 +1,12 @@
+//Falta mudar o C para F quando for farenheit e falt colocar filtro quando tiver vazia a resposta do servidor.
+
+
 import { buildLocationUrl, getCityName, buildNewLocationUrl } from './getCoords.js'
 import { getDataFromApi } from './fecthData.js'
 //import {convertCelsiusToFarenheit} from './utilities'
 
 
-//get all fields at index page that will be changed or fullfilled
+//get all fields at index page that will be changed or fullfilled and define variables
 const timeZone = document.getElementById('timezone');
 var temperature = document.getElementById('temperature');
 const description = document.getElementById('description');
@@ -11,10 +14,11 @@ const icon = document.getElementById('icon');
 const newplace = document.getElementById('newplace');
 const btn = document.getElementById('searchbtn');
 const waitIcon = document.getElementById('loading')
+const spanTemperature = document.getElementById('tempsign');
 let tempInCelsius;
 
 
-//define edresses for the API's
+//define adresses for the API's
 let baseUrlLocation = "https://api.openweathermap.org/data/2.5/weather?"
 let baseUrlGeo = "http://api.openweathermap.org/geo/1.0/direct?"
 waitIcon.style.visibility = 'visible';
@@ -27,89 +31,114 @@ await main();
 export async function main() {
     waitIcon.style.visibility = 'visible';
     temperature = document.getElementById('temperature');
-
     //It will hold all data based on coordinates. Data from the API will be held here
-
     const data = await getDataFromApi(completeUrlLocation)
+        //Set temperature from data
     tempInCelsius = data.main.temp
-    timeZone.textContent = `Station: ${data.name} / ${data.sys.country}`;
     temperature.setAttribute('name', 'celsius');
     temperature.textContent = tempInCelsius;
-
+    //Set stantion name from data
+    timeZone.textContent = `Station: ${data.name} / ${data.sys.country}`;
+    //Add listener to convert C to F or vice-versa
     temperature.addEventListener('click', tempConverter);
-
-
+    //Call both functions when triggered
     function tempConverter() {
+        //convert Temp
         convertTemp(tempInCelsius);
-
+        //set unit
+        changeFandC(spanTemperature);
 
     }
-
+    // set description from data
     description.textContent = data.weather[0].description;
+    //set feels_like from data
     icon.textContent = "Feels Like:  " + data.main.feels_like + "ºC";
+    //Add a listener to get new places
     btn.addEventListener('click', getNewCities)
+        //controlls wait signal
     waitIcon.style.visibility = 'hidden'
 
 }
 
+//function to get cities by name from tha API (second file)
 export async function getNewCities() {
     waitIcon.style.visibility = 'visible';
+    //form url to be called
     let newPlace = await getNewPlace()
-    const completeCityUrl = await getCityName(baseUrlGeo, newPlace)
-    const newCities = await getDataFromApi(completeCityUrl)
-        //agora tem que inserir essas cidades na tela para o usuário escolher.
-    await insertCities(newCities);
+        //test if it user has inputed any value and then go on or stops
+    if (newPlace) {
+        const completeCityUrl = await getCityName(baseUrlGeo, newPlace)
+            //Get data based on the new url
+        const newCities = await getDataFromApi(completeCityUrl)
+            //tests if file is empty
+        if (newCities == "") {
+            errorCatch()
+
+        } else {
+            //Insert the options at the view
+            await insertCities(newCities);
+
+        }
+    } else {
+        errorCatch();
+    }
+
+    //removes wait signal
     waitIcon.style.visibility = 'hidden';
-    //temperature.replaceWith(temperature.cloneNode(true))
 
 }
 
-
+//define the function that will insert cities as html element
 export async function insertCities(newCities) {
-
     const existingDiv = getDivElement('cities');
+    //empty the div
     existingDiv.innerHTML = "";
-    newCities.forEach(e => {
-        const div = document.createElement("div")
-        div.setAttribute('class', `card`);
-        const p1 = document.createElement("p");
-        const cityName = e.name;
-        p1.innerHTML = `City: ${cityName}`;
-        div.appendChild(p1);
-        const p2 = document.createElement("p")
-        const stateName = e.state;
-        p2.innerHTML = `State: ${stateName}`
-        div.appendChild(p2);
-        const p3 = document.createElement("p")
-        const countryName = e.country;
-        p3.innerHTML = `Country: ${countryName}`;
-        div.appendChild(p3);
-        const p4 = document.createElement("p");
-        const lon = e.lon;
-        p4.innerHTML = `Longitude: ${lon}`
-        div.appendChild(p4);
-        const p5 = document.createElement("p")
-        const lat = e.lat;
-        p5.innerHTML = `Latitude: ${lat}`
-        div.appendChild(p5);
-        div.addEventListener('click', async() => {
-            waitIcon.style.visibility = 'visible';
-            completeUrlLocation = await buildNewLocationUrl(baseUrlLocation, lat, lon);
-            //console.log(completeUrlLocation);
-            //get new data and call back the function.
-            temperature.replaceWith(temperature.cloneNode(true));
-            main()
-        }, false);
-        existingDiv.appendChild(div)
-            //For testing purposes
-            // console.log(div)
-            // console.log(existingDiv)
+    existingDiv.setAttribute('class', "cities");
+    if (newCities) {
+        //populate the div with new data
+        newCities.forEach(e => {
+            const div = document.createElement("div")
+            div.setAttribute('class', `card`);
+            const p1 = document.createElement("p");
+            const cityName = e.name;
+            p1.innerHTML = `City: ${cityName}`;
+            div.appendChild(p1);
+            const p2 = document.createElement("p")
+            const stateName = e.state;
+            p2.innerHTML = `State: ${stateName}`
+            div.appendChild(p2);
+            const p3 = document.createElement("p")
+            const countryName = e.country;
+            p3.innerHTML = `Country: ${countryName}`;
+            div.appendChild(p3);
+            const p4 = document.createElement("p");
+            const lon = e.lon;
+            p4.innerHTML = `Longitude: ${lon}`
+            div.appendChild(p4);
+            const p5 = document.createElement("p")
+            const lat = e.lat;
+            p5.innerHTML = `Latitude: ${lat}`
+            div.appendChild(p5);
+            //Insert a listener to change the place at main page and exibts new temperature
+            div.addEventListener('click', async() => {
+                waitIcon.style.visibility = 'visible';
+                completeUrlLocation = await buildNewLocationUrl(baseUrlLocation, lat, lon);
+                //removes the listener from temperature
+                temperature.replaceWith(temperature.cloneNode(true));
+                //get new data and call back the main function.
+                main()
+            }, false);
+            existingDiv.appendChild(div)
 
-    })
+        })
+    } else {
+        errorCatch()
+    }
+
 }
 
 
-//returns the value that was imputed for a new search
+//returns the value that was imputed for a new search and clean it
 export async function getNewPlace() {
     let newPlace = newplace.value;
     newplace.value = ""
@@ -122,6 +151,7 @@ export function getDivElement(name) {
     return divElement;
 }
 
+//Convert the temperature between ºC-F
 function convertTemp() {
     let atribute = temperature.getAttribute('name')
     if (atribute == 'celsius') {
@@ -143,6 +173,21 @@ function convertTemp() {
 
 }
 
-function temperatureCloneNode() {
-    temperature.replaceWith(temperature.cloneNode(true));
+//Change simbol ºC-F
+function changeFandC(spanTemperature) {
+    if (temperature.getAttribute('name') == "celsius") {
+        spanTemperature.textContent = "ºC";
+
+    }
+    if (temperature.getAttribute('name') == "fahrenheit") {
+        spanTemperature.textContent = "F";
+    }
+}
+
+function errorCatch() {
+    //Get Div at HTML
+    const existingDiv = getDivElement('cities');
+    //empty the div
+    existingDiv.setAttribute('class', `card`);
+    existingDiv.innerHTML = "There was no Data to return. Check if you filled search field correctly.";
 }
