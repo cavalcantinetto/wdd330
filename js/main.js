@@ -48,7 +48,6 @@ function buildMainIndex(links) {
         result = result.concat("<li><a href='", links[i].url, "'>", links[i].label, "</a></li>");
 
     }
-    console.log(result);
     return result
 }
 
