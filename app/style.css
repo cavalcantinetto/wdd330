@@ -16,6 +16,7 @@ body {
 }
 
 .location,
+.goback,
 .temperature .newsearch {
     height: 30vh;
     width: 50%;
@@ -25,7 +26,6 @@ body {
 }
 
 .goback {
-    display: flex;
     align-items: flex-start;
     flex-direction: column;
     margin-top: -200px;
